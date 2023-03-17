@@ -1,31 +1,16 @@
-#include <stdio.h>
-#include <stdarg.h>
+#include<stdlib.h>
+#include<stdio.h>
 
-int	suma(int n, ...)
+int	ft_printf(char const *s, char c)
 {
-	int	i;
-	int	s;
-	int	valor;
 
-	va_list	pars;
-	va_start	(pars, n);
-	i = 0;
-	s = 0;
-	while(i < n)
-	{	valor = va_arg(pars, int);
-		s += valor;
-		i++;
-	}	
-	va_end	(pars);
-	return (s);
-	
 }
 
 int	main(void)
 {
-	int	x;
+    char    *s;
 
-	x = suma(5, 1, 2, 3, 2, 1);
-	printf ("%i \n", x);
+    s = ft_printf("%c", 'a');
+    printf("%s \n", s);
 	return (0);
 }
