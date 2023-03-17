@@ -6,67 +6,66 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/14 19:56:23 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:41:56 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include "libftprint.h"
 
-static size_t	ft_counter(char const *s)
+static int	ft_checkchar(char const *s, int i, int cont, va_list args)
 {
-	size_t	i;
-	size_t	cont;
-	
-	i = 0;
-	cont = 0;
-	while(s[i] != '\0')
+	size_t	x;
+
+	x = 0;
+	if (s[i] == 'c')
 	{
-		if (s[i] == '%')
-			cont++;
-		i++;
+		ft_writechar();
+		printf("checkchar");
+		cont++;
 	}
 	return (cont);
 }
-
-static	ft_chars(char const *s, )
-{
-	size_t	i;
-	
-	if (s[i] == 'c')
-		ft_write
-}
-
 
 int	ft_printf(char const *s, ...)
 {
     va_list	pars;
 	size_t	i;
-	size_t	n;
+	int	cont;
 
-	n = ft_counter(s);
-    va_start(pars, n);
+    va_start(pars, s);
 	i = 0;
-	while(s[i] != '\0')
+	while (s[i] != '\0')
 	{
-		else if (s[i] == '%')
+		if (s[i] == '%')
 		{
 			i++;
 			if (s[i] == 'c' || s[i] == 's')
-				ft_chars(s, );
+			{
+				cont = ft_checkchar(s, i, cont, pars);
+				printf("pasa");
+			}
+			else
+				write (1, '%', 1);
+		}
+		else if (s[i] == '\n')
+		{
+			write (1, "\n", 1);
+			cont++;
+		}
+		else
+		{
+			write (1, &s[i], 1);
+			cont++;
 		}
 		i++;
-	
 	}
-
+	return(cont);
 }
 
 int	main(void)
 {
-    char    *s;
 
-
-    s = ft_printf("%c", 'a');
-    printf("%s \n", s);
+	printf("\n%i", ft_printf("hola \n %c", 'c'));
 	return (0);
 }
