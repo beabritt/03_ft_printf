@@ -6,14 +6,14 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:11:07 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/14 17:33:55 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:55:50 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include "libftprint.h"
+#include "libftprintf.h"
 
 static int	my_counter(long n)
 {
@@ -42,7 +42,7 @@ static int	ft_div(long n)
 		return (n + '0');
 }
 
-void	ft_writenbr(int n, int fd)
+void	ft_writenbr(int n)
 {
 	char	c;
 	char	s [20];
@@ -53,7 +53,7 @@ void	ft_writenbr(int n, int fd)
 	num = n;
 	if (num < 0)
 	{	
-		write(fd, "-", 1);
+		write(1, "-", 1);
 		num = -num;
 	}
 	if (num >= 0)

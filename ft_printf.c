@@ -6,17 +6,29 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/20 14:24:37 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:58:28 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include<unistd.h>
 #include<stdarg.h>
-#include "libftprint.h"
+#include "libftprintf.h"
 
 void	ft_writechar(char c);
 void    ft_writestr(char *s);
+void	ft_writenbr(int n);
+
+static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
+{
+	size_t	x;
+	
+	x = 0;
+	if (s[i] == 'i')
+		ft_writenbr(va_arg(pars, int));
+	cont++;
+	return (cont);
+}
 
 static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
 {
@@ -24,15 +36,14 @@ static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
 	
 	x = 0;
 	if (s[i] == 'c')
-	{
 		ft_writechar(va_arg(pars, int));
-		cont++;
-	}
-	if (s[i] == 's')
-	{
+	else if (s[i] == 's')
 		ft_writestr(va_arg(pars, char *));
-		cont++;
-	}
+	else if (s[i] == '%')
+		ft_writechar('%');
+	else
+		ft_vchecknum(s, i, cont, pars);
+	cont++;
 	return (cont);
 }
 
@@ -59,12 +70,12 @@ int	ft_printf(char const *s, ...)
 		i++;
 	}
 	va_end(pars);
-	return(cont);
+	return (cont);
 }
 
 int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola \n%c%s", 'c', "bea"));
+	printf("\n%i", ft_printf("hola \n%c%s%%%i", 'c', "bea", 3));
 	return (0);
 }

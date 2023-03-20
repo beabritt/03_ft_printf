@@ -3,39 +3,55 @@
 #include<unistd.h>
 #include<stdarg.h>
 
-static size_t	ft_counter(char const *s)
+
+void	ft_writechar(char c);
+void    ft_writestr(char *s);
+
+static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
 {
-	size_t	i;
-	size_t	cont;
+	size_t	x;
 	
-	i = 0;
-	cont = 0;
-	while(s[i] != '\0')
+	x = 0;
+	if (s[i] == 'i')
 	{
-		if (s[i] == '%')
-			cont++;
-		i++;
+		
 	}
+	
+}
+
+static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
+{
+	size_t	x;
+	
+	x = 0;
+	if (s[i] == 'c')
+		ft_writechar(va_arg(pars, int));
+	else if (s[i] == 's')
+		ft_writestr(va_arg(pars, char *));
+	else if (s[i] == 'p')
+		ft_writep(va_arg(pars, void *));
+	else if (s[i] == '%')
+		ft_writechar('%');
+	else
+		ft_vchecknum(s, i, cont, pars);
+	cont++;
 	return (cont);
 }
 
 int	ft_printf(char const *s, ...)
 {
+    va_list	pars;
 	size_t	i;
-	size_t	n;
-	size_t	cont;
-	va_list	pars;
+	int	cont;
 
-	n = ft_counter(s);
     va_start(pars, s);
-	cont = 0;
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '\n')
+		if (s[i] == '%')
 		{
-			write (1, "\n", 1);
-			cont++;
+			i++;
+			cont = ft_vcheckchar(s, i, cont, pars);
 		}
 		else
 		{
@@ -44,11 +60,13 @@ int	ft_printf(char const *s, ...)
 		}
 		i++;
 	}
+	va_end(pars);
 	return(cont);
 }
 
 int	main(void)
 {
-	printf("\n%i", printf("hola \n"));
+
+	printf("\n%i", ft_printf("hola \n%c%s%%", 'c', "bea"));
 	return (0);
 }

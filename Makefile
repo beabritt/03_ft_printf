@@ -3,7 +3,7 @@ SRC =	ft_printf.c \
 		
 OBJS= $(SRC:.c=.o)
 NAME = libftprintf.a
-DPS = libftprint.h
+DPS = libftprintf.h
 
 CC = gcc
 
