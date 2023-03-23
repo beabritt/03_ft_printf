@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/20 14:58:28 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:06:20 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	ft_writenbr(int n);
 
 static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
 {
-	size_t	x;
-	
-	x = 0;
 	if (s[i] == 'i')
 		ft_writenbr(va_arg(pars, int));
 	cont++;
@@ -32,9 +29,6 @@ static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
 
 static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
 {
-	size_t	x;
-	
-	x = 0;
 	if (s[i] == 'c')
 		ft_writechar(va_arg(pars, int));
 	else if (s[i] == 's')
@@ -76,6 +70,6 @@ int	ft_printf(char const *s, ...)
 int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola \n%c%s%%%i", 'c', "bea", 3));
+	printf("\n%i", ft_printf("hola %c%s%% %hola", 'c', "bea", 3));
 	return (0);
 }
