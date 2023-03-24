@@ -12,7 +12,7 @@
 
 #include<unistd.h>
 #include<stdio.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static size_t  ft_strlen(char *s)
 {

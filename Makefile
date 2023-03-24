@@ -1,9 +1,12 @@
 SRC =	ft_printf.c \
 		ft_writechar.c \
+		ft_writestr.c \
+		ft_writenbr.c \
+		ft_writeunbr.c
 		
 OBJS= $(SRC:.c=.o)
 NAME = libftprintf.a
-DPS = libftprintf.h
+DPS = ft_printf.h
 
 CC = gcc
 

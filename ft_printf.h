@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprint.h                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 
-#ifndef LIBFTPRINT_H
-#define LIBFTPRINT_H
+#ifndef FT_PRINTF_H
+#define FT_PRINTF_H
 
 int	ft_printf(char const *s, ...);
 int	ft_writechar(char c);
 int ft_writestr(char *s);
 int	ft_writenbr(int n);
+int	ft_writeunbr(int n);
 
 
 #include<stdlib.h>

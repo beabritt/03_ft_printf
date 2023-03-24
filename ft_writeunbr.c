@@ -12,49 +12,48 @@
 
 #include<unistd.h>
 #include<stdio.h>
-#include<stdlib.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-
-static int	ft_div(long num)
+static int	my_counter(long n)
 {
-    while (num > 9)
-		num = (num / 10);
-    return (num + '0');
+	int	cont;
+
+	cont = 0;
+	while (n > 0)
+	{
+		n = n / 10;
+		cont++;
+	}
+	return (cont);
 }
 
-void	ft_writednbr(int n)
+int	ft_writeunbr(int n)
 {
 	char	c;
-	long	num;
-	int	x;
+	char	s [32];
+	size_t	cont;
+	size_t	slen;
+	unsigned long	num;
 
+	if (n < 0)
+		n = -n;
 	num = n;
-	if (num < 0)
-	{	
-		write(1, "-", 1);
-		num = -num;
-	}
-    if (num >= 0)
+	cont = my_counter(n);
+	slen = cont;
+	s[cont] = '\0';
+	while (num > 0)
 	{
-		while (num > 99)
-		{
-			c = (ft_div(num));
-			num = num / 10;
-            write (1, &c, 1);
-		}
-		if (num < 99)
-		{
-			x = num / 10;
-			write (1, &x, 1);
-			x = num % 10;
-			write (1, &x, 1);
-		}
+		cont--;
+		c = num % 10 + '0';
+		num = num / 10;
+		s[cont] = c;
 	}
+	write(1, s, slen);
+	return (slen);
 }
 
 /*int	main(void)
 {
-	ft_writednbr(550);
+	printf("\n%i", ft_writenbr(-666));
 	return (0);
 }*/

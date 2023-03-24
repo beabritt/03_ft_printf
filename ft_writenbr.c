@@ -13,7 +13,7 @@
 #include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	my_counter(long n)
 {

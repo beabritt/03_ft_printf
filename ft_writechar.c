@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_writechar(char c)
 {

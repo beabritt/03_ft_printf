@@ -13,16 +13,19 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<stdarg.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_writechar(char c);
 int	ft_writestr(char *s);
 int	ft_writenbr(int n);
+int	ft_writeunbr(int n);
 
 static int	ft_vchecknum (char const *s, int i, va_list pars)
 {
 	if (s[i] == 'i' || s[i] == 'd')
 		return(ft_writenbr(va_arg(pars, int)));
+	if (s[i] == 'u')
+		return(ft_writeunbr(va_arg(pars, int)));
 	return (0);
 }
 
@@ -66,9 +69,9 @@ int	ft_printf(char const *s, ...)
 	return (cont);
 }
 
-int	main(void)
+/*int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola %c %s %% %i", 'c', "bea", -5));
+	printf("\n%i", ft_printf("hola %c %s %% %u", 'c', "bea", 35));
 	return (0);
-}
+}*/
