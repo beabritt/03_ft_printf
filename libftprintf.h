@@ -15,7 +15,10 @@
 #define LIBFTPRINT_H
 
 int	ft_printf(char const *s, ...);
-void	ft_writechar(char c);
+int	ft_writechar(char c);
+int ft_writestr(char *s);
+int	ft_writenbr(int n);
+
 
 #include<stdlib.h>
 #include<stdio.h>

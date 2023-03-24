@@ -15,30 +15,28 @@
 #include<stdarg.h>
 #include "libftprintf.h"
 
-void	ft_writechar(char c);
-void    ft_writestr(char *s);
-void	ft_writenbr(int n);
+int	ft_writechar(char c);
+int	ft_writestr(char *s);
+int	ft_writenbr(int n);
 
-static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
+static int	ft_vchecknum (char const *s, int i, va_list pars)
 {
 	if (s[i] == 'i' || s[i] == 'd')
-		ft_writenbr(va_arg(pars, int));
-	cont++;
-	return (cont);
+		return(ft_writenbr(va_arg(pars, int)));
+	return (0);
 }
 
-static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
+static int	ft_vcheckchar(char const *s, int i, va_list pars)
 {
 	if (s[i] == 'c')
-		ft_writechar(va_arg(pars, int));
+		return (ft_writechar(va_arg(pars, int)));
 	else if (s[i] == 's')
-		ft_writestr(va_arg(pars, char *));
+		return (ft_writestr(va_arg(pars, char *)));
 	else if (s[i] == '%')
-		ft_writechar('%');
+		return (ft_writechar('%'));
 	else
-		ft_vchecknum(s, i, cont, pars);
-	cont++;
-	return (cont);
+		return (ft_vchecknum(s, i, pars));
+	return (0);
 }
 
 int	ft_printf(char const *s, ...)
@@ -55,7 +53,7 @@ int	ft_printf(char const *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			cont += ft_vcheckchar(s, i, cont, pars);
+			cont += ft_vcheckchar(s, i, pars);
 		}
 		else
 		{
@@ -71,6 +69,6 @@ int	ft_printf(char const *s, ...)
 int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola %c", 'c'));
+	printf("\n%i", ft_printf("hola %c %s %% %i", 'c', "bea", -5));
 	return (0);
 }

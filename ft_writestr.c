@@ -26,11 +26,12 @@ static size_t  ft_strlen(char *s)
     return (i);
 }
 
-void    ft_writestr(char *s)
+int	ft_writestr(char *s)
 {
     size_t  slen;
 
     slen = ft_strlen(s);
     
     write(1, s, slen);
+    return (slen);
 }

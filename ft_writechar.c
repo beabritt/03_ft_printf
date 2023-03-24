@@ -13,7 +13,8 @@
 #include<unistd.h>
 #include "libftprintf.h"
 
-void	ft_writechar(char c)
+int	ft_writechar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }
