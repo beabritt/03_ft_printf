@@ -21,7 +21,7 @@ void	ft_writenbr(int n);
 
 static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
 {
-	if (s[i] == 'i')
+	if (s[i] == 'i' || s[i] == 'd')
 		ft_writenbr(va_arg(pars, int));
 	cont++;
 	return (cont);
@@ -49,12 +49,13 @@ int	ft_printf(char const *s, ...)
 
     va_start(pars, s);
 	i = 0;
+	cont = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == '%')
 		{
 			i++;
-			cont = ft_vcheckchar(s, i, cont, pars);
+			cont += ft_vcheckchar(s, i, cont, pars);
 		}
 		else
 		{
@@ -70,6 +71,6 @@ int	ft_printf(char const *s, ...)
 int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola %c%s%% %hola", 'c', "bea", 3));
+	printf("\n%i", ft_printf("hola %c", 'c'));
 	return (0);
 }

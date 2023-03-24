@@ -53,8 +53,8 @@ void	ft_writednbr(int n)
 	}
 }
 
-int	main(void)
+/*int	main(void)
 {
 	ft_writednbr(550);
 	return (0);
-}
+}*/

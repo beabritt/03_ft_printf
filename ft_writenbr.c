@@ -20,7 +20,12 @@ static int	my_counter(long n)
 	int	cont;
 
 	cont = 0;
-	while (n > 9)
+	if (n < 0)
+	{
+		cont++;
+		n = -n;
+	}
+	while (n > 0)
 	{
 		n = n / 10;
 		cont++;
@@ -28,51 +33,36 @@ static int	my_counter(long n)
 	return (cont);
 }
 
-static int	ft_div(long n)
-{
-	long	x;
-
-	x = n;
-	if (x > 9)
-	{
-		n = (n % 10) + '0';
-		return (n);
-	}
-	else
-		return (n + '0');
-}
-
-void	ft_writenbr(int n)
+int	ft_writenbr(int n)
 {
 	char	c;
-	char	s [20];
+	char	s [32];
 	size_t	cont;
 	size_t	slen;
 	long	num;
 
 	num = n;
-	if (num < 0)
+	if (n < 0)
 	{	
-		write(1, "-", 1);
+		s[0] = '-';
 		num = -num;
 	}
-	if (num >= 0)
+	cont = my_counter(n);
+	slen = cont;
+	s[cont] = '\0';
+	while (num > 0)
 	{
-		cont = my_counter(num) + 1;
-		slen = cont;
-		while (cont > 0)
-		{
-			c = (ft_div(num));
-			num = num / 10;
-			s[cont - 1] = c;
-			cont--;
-		}
-		write(1, s, slen);
+		cont--;
+		c = num % 10 + '0';
+		num = num / 10;
+		s[cont] = c;
 	}
+	write(1, s, slen);
+	return (slen);
 }
 
 /*int	main(void)
 {
-	ft_putnbr_fd(-2147483648, 1);
+	printf("\n%i", ft_writenbr(-666));
 	return (0);
 }*/

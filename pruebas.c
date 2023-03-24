@@ -3,70 +3,55 @@
 #include<unistd.h>
 #include<stdarg.h>
 
-
-void	ft_writechar(char c);
-void    ft_writestr(char *s);
-
-static int	ft_vchecknum (char const *s, int i, int cont, va_list pars)
+static int	num_of_char(int n)
 {
-	size_t	x;
-	
-	x = 0;
-	if (s[i] == 'i')
+	int				i;
+	unsigned int	num;
+
+	i = 1;
+	num = n;
+	if (n < 0)
 	{
-		
+		i = 2;
+		num = -n;
 	}
-	
-}
-
-static int	ft_vcheckchar(char const *s, int i, int cont, va_list pars)
-{
-	size_t	x;
-	
-	x = 0;
-	if (s[i] == 'c')
-		ft_writechar(va_arg(pars, int));
-	else if (s[i] == 's')
-		ft_writestr(va_arg(pars, char *));
-	else if (s[i] == 'p')
-		ft_writep(va_arg(pars, void *));
-	else if (s[i] == '%')
-		ft_writechar('%');
-	else
-		ft_vchecknum(s, i, cont, pars);
-	cont++;
-	return (cont);
-}
-
-int	ft_printf(char const *s, ...)
-{
-    va_list	pars;
-	size_t	i;
-	int	cont;
-
-    va_start(pars, s);
-	i = 0;
-	while (s[i] != '\0')
+	while (num > 9)
 	{
-		if (s[i] == '%')
-		{
-			i++;
-			cont = ft_vcheckchar(s, i, cont, pars);
-		}
-		else
-		{
-			write (1, &s[i], 1);
-			cont++;
-		}
+		num = num / 10;
 		i++;
 	}
-	va_end(pars);
-	return(cont);
+	return (i);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char			buffer[42];
+	unsigned int	num;
+	int				i;
+
+	i = num_of_char(n);
+	num = n;
+	if (n < 0)
+	{
+		num = -n;
+		buffer[0] = '-';
+	}
+	buffer[i] = 0;
+	buffer[i - 1] = '0';
+	while (num > 0)
+	{
+		i--;
+		buffer[i] = num % 10 + 48;
+		num /= 10;
+	}
+	i = 0;
+	while (buffer[i])
+		i++;
+	write(fd, buffer, i);
 }
 
 int	main(void)
 {
-
-	printf("\n%i", ft_printf("hola \n%c%s%%", 'c', "bea"));
+	ft_putnbr_fd(-2147483648, 1);
 	return (0);
 }
