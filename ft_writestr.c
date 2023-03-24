@@ -30,7 +30,12 @@ int	ft_writestr(char *s)
 {
     size_t  slen;
 
-    slen = ft_strlen(s);
+    if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	slen = ft_strlen(s);
     
     write(1, s, slen);
     return (slen);

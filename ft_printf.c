@@ -24,8 +24,10 @@ static int	ft_vchecknum (char const *s, int i, va_list pars)
 {
 	if (s[i] == 'i' || s[i] == 'd')
 		return(ft_writenbr(va_arg(pars, int)));
-	if (s[i] == 'u')
+	else if (s[i] == 'u')
 		return(ft_writeunbr(va_arg(pars, int)));
+	else if (s[i] == 'x')
+		return (ft_writehex(va_arg(pars, unsigned long int)));
 	return (0);
 }
 
@@ -51,7 +53,7 @@ int	ft_printf(char const *s, ...)
     va_start(pars, s);
 	i = 0;
 	cont = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] == '%')
 		{
@@ -69,9 +71,9 @@ int	ft_printf(char const *s, ...)
 	return (cont);
 }
 
-/*int	main(void)
+int	main(void)
 {
 
-	printf("\n%i", ft_printf("hola %c %s %% %u", 'c', "bea", 35));
+	printf("\n%i", ft_printf("%i %iii", 5, 5));
 	return (0);
-}*/
+}

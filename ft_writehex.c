@@ -11,9 +11,17 @@
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void    ft_writehex()
+int    ft_writehex(unsigned long int)
 {
-    
+    int	s [32];
+	
+}
+
+int	main(void)
+{
+
+	printf("%i",ft_writehex());
+	return (0);
 }

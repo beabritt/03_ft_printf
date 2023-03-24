@@ -14,11 +14,14 @@
 #include<stdio.h>
 #include "ft_printf.h"
 
-static int	my_counter(long n)
+
+static int	my_counter(unsigned int n)
 {
 	int	cont;
 
 	cont = 0;
+	if (n == 0)
+		cont = 1;
 	while (n > 0)
 	{
 		n = n / 10;
@@ -33,14 +36,13 @@ int	ft_writeunbr(int n)
 	char	s [32];
 	size_t	cont;
 	size_t	slen;
-	unsigned long	num;
+	unsigned int	num;
 
-	if (n < 0)
-		n = -n;
 	num = n;
-	cont = my_counter(n);
+	cont = my_counter(num);
 	slen = cont;
 	s[cont] = '\0';
+	s[cont - 1] = '0';
 	while (num > 0)
 	{
 		cont--;
@@ -54,6 +56,6 @@ int	ft_writeunbr(int n)
 
 /*int	main(void)
 {
-	printf("\n%i", ft_writenbr(-666));
+	printf("\n%i", ft_writeunbr(-10));
 	return (0);
 }*/
