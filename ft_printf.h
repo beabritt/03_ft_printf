@@ -10,19 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <stdlib.h>
+# include <stdio.h>
 
 int	ft_printf(char const *s, ...);
 int	ft_writechar(char c);
-int ft_writestr(char *s);
+int	ft_writestr(char *s);
 int	ft_writenbr(int n);
 int	ft_writeunbr(int n);
-
-
-#include<stdlib.h>
-#include<stdio.h>
-
+int	ft_writehexma(unsigned int num);
+int	ft_writehexmi(unsigned int num);
 
 #endif

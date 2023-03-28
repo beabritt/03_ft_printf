@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/23 13:06:20 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:40:46 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ int	ft_writechar(char c);
 int	ft_writestr(char *s);
 int	ft_writenbr(int n);
 int	ft_writeunbr(int n);
+int	ft_writehexma(unsigned int num);
+int	ft_writehexmi(unsigned int num);
 
-static int	ft_vchecknum (char const *s, int i, va_list pars)
+static int	ft_vchecknum(char const *s, int i, va_list pars)
 {
 	if (s[i] == 'i' || s[i] == 'd')
-		return(ft_writenbr(va_arg(pars, int)));
+		return (ft_writenbr(va_arg(pars, int)));
 	else if (s[i] == 'u')
-		return(ft_writeunbr(va_arg(pars, int)));
+		return (ft_writeunbr(va_arg(pars, int)));
 	else if (s[i] == 'x')
-		return (ft_writehex(va_arg(pars, unsigned long int)));
+		return (ft_writehexmi(va_arg(pars, unsigned int)));
+	else if (s[i] == 'X')
+		return (ft_writehexma(va_arg(pars, unsigned int)));
 	return (0);
 }
 
@@ -46,11 +50,11 @@ static int	ft_vcheckchar(char const *s, int i, va_list pars)
 
 int	ft_printf(char const *s, ...)
 {
-    va_list	pars;
+	va_list	pars;
 	size_t	i;
-	int	cont;
+	int		cont;
 
-    va_start(pars, s);
+	va_start(pars, s);
 	i = 0;
 	cont = 0;
 	while (s[i])
@@ -71,9 +75,8 @@ int	ft_printf(char const *s, ...)
 	return (cont);
 }
 
-int	main(void)
+/*int	main(void)
 {
-
-	printf("\n%i", ft_printf("%i %iii", 5, 5));
+	printf("\n%i", ft_printf("%X", 10));
 	return (0);
-}
+}*/

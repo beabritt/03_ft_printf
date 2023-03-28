@@ -2,7 +2,9 @@ SRC =	ft_printf.c \
 		ft_writechar.c \
 		ft_writestr.c \
 		ft_writenbr.c \
-		ft_writeunbr.c
+		ft_writeunbr.c \
+		ft_writehexma.c \
+		ft_writehexmi.c
 		
 OBJS= $(SRC:.c=.o)
 NAME = libftprintf.a
