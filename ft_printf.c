@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/28 18:40:46 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:29:19 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include<stdarg.h>
 #include "ft_printf.h"
 
-int	ft_writechar(char c);
-int	ft_writestr(char *s);
-int	ft_writenbr(int n);
-int	ft_writeunbr(int n);
-int	ft_writehexma(unsigned int num);
-int	ft_writehexmi(unsigned int num);
-
 static int	ft_vchecknum(char const *s, int i, va_list pars)
 {
 	if (s[i] == 'i' || s[i] == 'd')
@@ -29,9 +22,11 @@ static int	ft_vchecknum(char const *s, int i, va_list pars)
 	else if (s[i] == 'u')
 		return (ft_writeunbr(va_arg(pars, int)));
 	else if (s[i] == 'x')
-		return (ft_writehexmi(va_arg(pars, unsigned int)));
+		return (ft_writehex(va_arg(pars, unsigned int), 0));
 	else if (s[i] == 'X')
-		return (ft_writehexma(va_arg(pars, unsigned int)));
+		return (ft_writehex(va_arg(pars, unsigned int), 1));
+	//else if (s[i] == 'p')
+		//return (ft_writep(va_arg(pars, void *)));
 	return (0);
 }
 
@@ -77,6 +72,6 @@ int	ft_printf(char const *s, ...)
 
 /*int	main(void)
 {
-	printf("\n%i", ft_printf("%X", 10));
+	printf("\n%i", ft_printf("%p", 8159));
 	return (0);
 }*/

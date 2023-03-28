@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writehexmi.c                                    :+:      :+:    :+:   */
+/*   ft_writehex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 15:54:38 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/28 18:40:21 by becamino         ###   ########.fr       */
+/*   Created: 2023/03/14 17:36:25 by becamino          #+#    #+#             */
+/*   Updated: 2023/03/28 20:41:56 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
 #include "ft_printf.h"
 
-int	ft_llen(unsigned int num)
+int	ft_len(unsigned int num)
 {
 	unsigned long int	z;
 	size_t				cont;
@@ -28,53 +28,42 @@ int	ft_llen(unsigned int num)
 	}
 	return (cont);
 }
-
-int	ft_lletter(unsigned int rest)
-{
-	if (rest == 10)
-		return (97);
-	if (rest == 11)
-		return (98);
-	if (rest == 12)
-		return (99);
-	if (rest == 13)
-		return (100);
-	if (rest == 14)
-		return (101);
-	else
-		return (102);
-}
-
-int	ft_writehexmi(unsigned int num)
+void	ft_writer(unsigned int num, int cont, char *s, char isMayus)
 {
 	unsigned long int	rest;
-	char				s [32];
-	int					cont;
-	int					x;
+	char				tochar;
 
-	cont = ft_llen(num);
-	x = cont;
-	if (num == 0)
-		s[0] = '0';
+	if (isMayus > 0)
+		tochar = 'A';
+	else
+		tochar = 'a';
 	while (num > 0)
 	{
 		rest = num % 16;
 		if (rest > 9)
-		{	
-			rest = ft_lletter(rest);
-			s[cont - 1] = rest;
-		}
+			s[cont - 1] = rest - 10 + tochar;
 		else
 			s[cont - 1] = rest + '0';
 		num = num / 16;
-		cont --;
+		cont--;
 	}
-	write (1, s, x);
-	return (x);
+}
+
+int	ft_writehex(unsigned int num, char isMayus)
+{
+	char				s [32];
+	int					cont;
+
+	cont = ft_len(num);
+	if (num == 0)
+		s[0] = '0';
+	ft_writer(num, cont, s, isMayus);
+	write (1, s, cont);
+	return (cont);
 }
 
 /*int	main(void)
 {
-	printf("\n%i", ft_writehexmi(8159));
+	printf("\n%i", ft_writehexma(0));
 	return (0);
 }*/

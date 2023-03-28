@@ -21,7 +21,6 @@ int	ft_writechar(char c);
 int	ft_writestr(char *s);
 int	ft_writenbr(int n);
 int	ft_writeunbr(int n);
-int	ft_writehexma(unsigned int num);
-int	ft_writehexmi(unsigned int num);
+int	ft_writehex(unsigned int num, char isMayus);
 
 #endif
