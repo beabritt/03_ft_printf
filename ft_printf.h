@@ -22,5 +22,6 @@ int	ft_writestr(char *s);
 int	ft_writenbr(int n);
 int	ft_writeunbr(int n);
 int	ft_writehex(unsigned int num, char isMayus);
+int	ft_writep(unsigned long int);
 
 #endif

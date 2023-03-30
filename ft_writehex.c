@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:36:25 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/28 20:41:56 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:07:02 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_len(unsigned int num)
 {
-	unsigned long int	z;
+	unsigned int	z;
 	size_t				cont;
 
 	z = 1;
@@ -28,9 +28,10 @@ int	ft_len(unsigned int num)
 	}
 	return (cont);
 }
+
 void	ft_writer(unsigned int num, int cont, char *s, char isMayus)
 {
-	unsigned long int	rest;
+	unsigned int	rest;
 	char				tochar;
 
 	if (isMayus > 0)
@@ -61,6 +62,17 @@ int	ft_writehex(unsigned int num, char isMayus)
 	write (1, s, cont);
 	return (cont);
 }
+
+/*int	main (void)
+{
+	int	x;
+	void *p;
+	
+	x = 666;
+	p = &x;
+	printf("\n%i", ft_writep(p));
+	return (0);
+}*/
 
 /*int	main(void)
 {

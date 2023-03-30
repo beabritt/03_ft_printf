@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/28 20:29:19 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:18:02 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_vchecknum(char const *s, int i, va_list pars)
 		return (ft_writehex(va_arg(pars, unsigned int), 0));
 	else if (s[i] == 'X')
 		return (ft_writehex(va_arg(pars, unsigned int), 1));
-	//else if (s[i] == 'p')
-		//return (ft_writep(va_arg(pars, void *)));
+	else if (s[i] == 'p')
+		return (ft_writep(va_arg(pars, unsigned long int)));
 	return (0);
 }
 
@@ -69,9 +69,14 @@ int	ft_printf(char const *s, ...)
 	va_end(pars);
 	return (cont);
 }
-
 /*int	main(void)
 {
-	printf("\n%i", ft_printf("%p", 8159));
+	int		x;
+	void	*p;
+	x = 666;
+	p = &x;
+	
+	printf("\n%i\n", ft_printf("%p", (void *)-1));
+	printf("\n%d",printf("%p", (void *)-1));
 	return (0);
 }*/

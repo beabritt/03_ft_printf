@@ -4,6 +4,7 @@ SRC =	ft_printf.c \
 		ft_writenbr.c \
 		ft_writeunbr.c \
 		ft_writehex.c \
+		ft_writep.c 
 
 		
 OBJS= $(SRC:.c=.o)
