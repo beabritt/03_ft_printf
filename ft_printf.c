@@ -6,11 +6,10 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:27:14 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/30 19:18:02 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:33:02 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
 #include<unistd.h>
 #include<stdarg.h>
 #include "ft_printf.h"

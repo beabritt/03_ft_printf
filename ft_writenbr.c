@@ -6,13 +6,10 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:11:07 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/20 14:55:50 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:34:10 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include<stdio.h>
-#include<stdlib.h>
 #include "ft_printf.h"
 
 static int	my_counter(long n)

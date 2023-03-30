@@ -6,12 +6,10 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:24:09 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/28 16:18:27 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:34:19 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include<stdio.h>
 #include "ft_printf.h"
 
 static size_t	ft_strlen(char *s)

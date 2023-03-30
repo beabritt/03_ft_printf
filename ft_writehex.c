@@ -6,17 +6,16 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:36:25 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/30 18:07:02 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:33:56 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
 #include "ft_printf.h"
 
 int	ft_len(unsigned int num)
 {
 	unsigned int	z;
-	size_t				cont;
+	size_t			cont;
 
 	z = 1;
 	cont = 0;
@@ -32,7 +31,7 @@ int	ft_len(unsigned int num)
 void	ft_writer(unsigned int num, int cont, char *s, char isMayus)
 {
 	unsigned int	rest;
-	char				tochar;
+	char			tochar;
 
 	if (isMayus > 0)
 		tochar = 'A';
@@ -52,8 +51,8 @@ void	ft_writer(unsigned int num, int cont, char *s, char isMayus)
 
 int	ft_writehex(unsigned int num, char isMayus)
 {
-	char				s [32];
-	int					cont;
+	char	s [32];
+	int		cont;
 
 	cont = ft_len(num);
 	if (num == 0)

@@ -6,11 +6,10 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 14:44:25 by becamino          #+#    #+#             */
-/*   Updated: 2023/03/30 19:17:43 by becamino         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:34:16 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
 #include "ft_printf.h"
 
 int	ft_lenp(unsigned long int num)
@@ -49,9 +48,9 @@ void	ft_writerp(unsigned long int num, int cont, char *s)
 
 int	ft_writep(unsigned long int num)
 {
-	int	cont;
-	int	len;
-	char				s [32];
+	int		cont;
+	int		len;
+	char	s [32];
 
 	cont = 2;
 	write (1, "0x", 2);
